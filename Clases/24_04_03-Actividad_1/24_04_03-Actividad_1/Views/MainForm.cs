@@ -10,13 +10,14 @@ namespace _24_04_03_Actividad_1
         {
             InitializeComponent();
             this._User = currentUser;
+            string appPath = Application.StartupPath;
             try
             {
-                ProfilePic.Image = Image.FromFile($"../../../Uploads/{this._User.ProfilePic}"); ;
+                ProfilePic.Image = Image.FromFile(Path.Combine(appPath, "Uploads", this._User.ProfilePic));
             }
             catch (FileNotFoundException)
             {
-                ProfilePic.Image = Image.FromFile($"../../../Uploads/default.jpg");
+                ProfilePic.Image = Image.FromFile(Path.Combine(appPath, "Uploads/default.jpg"));
             }
         }
 
@@ -28,7 +29,7 @@ namespace _24_04_03_Actividad_1
 
                 // Guardar la imagen en una carpeta dentro de la aplicación
                 string fileName = Path.GetFileName(ProfilePicLoader.FileName);
-                string filePath = $"../../../Uploads/{fileName}";
+                string filePath = Path.Combine(Application.StartupPath, "Uploads", fileName);
                 picImage.Save(filePath);
 
                 ProfilePic.Image = Image.FromFile(ProfilePicLoader.FileName);

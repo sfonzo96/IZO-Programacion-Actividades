@@ -12,10 +12,10 @@ namespace _24_04_03_Actividad_1.Services
     internal class UserService
     {
         static UserService? Instance;
-        string DataPath;
-        private UserService(string dataPath)
+
+        string DataPath = Path.Combine(Application.StartupPath, "Data/users.json");
+        public UserService()
         {
-            this.DataPath = dataPath;
         }
 
         public bool AddUser(string username, string firstName, string lastName,string password, string email)
@@ -87,7 +87,7 @@ namespace _24_04_03_Actividad_1.Services
         {
             if (UserService.Instance == null)
             {
-                UserService.Instance = new UserService("../../../Data/users.json");
+                UserService.Instance = new UserService();
             }
             return UserService.Instance;
         }
