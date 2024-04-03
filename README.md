@@ -1,8 +1,7 @@
-# Lógica y estructura de datos - IZO (2023)
+# Programación 1 - IZO (2024)
 
 Repositorio de actividades para la materia Programación 1. Materia de 2° año de la carrera Tecnicatura en Desarrollo de
-Software dictada en el Instituto Superior Zona Oeste (ISPI 9045). Se utiliza como guía de estudio el libro:
-(_completar_).
+Software dictada en el Instituto Superior Zona Oeste (ISPI 9045).
 
 ## Este repositorio
 
@@ -14,7 +13,7 @@ sub-directorio contiene los enunciados de los ejercicios.
 
 ### Clase 21-04-2023
 
-[Ver archivos](https://github.com/sfonzo96/IZO-Programacion-Actividades/blob/main/Clases/24_04_03-Actividad).
+[Ver archivos](https://github.com/sfonzo96/IZO-Programacion-Actividades/blob/main/Clases/24_04_03-Actividad_1).
 
 ## Software requerido
 
