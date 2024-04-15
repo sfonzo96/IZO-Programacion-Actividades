@@ -1,0 +1,2 @@
+﻿Esta carpeta (Resources) tiene dos subcarpets (Data y Assets).
+Se deben mover ambas a la ubicación del ejecutable para funcionar correctamente (posteriormente se agregará un mecanismo de respaldo en caso de que se continue trabajando sobre la aplicación)

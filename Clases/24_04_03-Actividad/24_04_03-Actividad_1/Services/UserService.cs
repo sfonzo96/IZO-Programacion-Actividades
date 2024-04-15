@@ -12,7 +12,7 @@ namespace _24_04_03_Actividad_1.Services
     internal class UserService
     {
         static UserService? Instance;
-
+        
         string DataPath = Path.Combine(Application.StartupPath, "Data/users.json");
         public UserService()
         {
@@ -27,23 +27,23 @@ namespace _24_04_03_Actividad_1.Services
             }
 
             User user = new User(username, firstName, lastName, email, password);
-            List<User> users = this.GetUsers();
+            List<User>? users = this.GetUsers();
             users.Add(user);
             this.UpdateUsersJson(users);
 
             return true;
         }
 
-        public User GetUser(string username)
+        public User? GetUser(string username)
         {
             List<User> users = this.GetUsers();
-            User user = users.SingleOrDefault(user => user.Username == username);
+            User? user = users.SingleOrDefault(user => user.Username == username);
             return user;
         }
 
         public bool UpdateUserPic(string username, string path)
         {
-            List<User> users = this.GetUsers();
+            List<User>? users = this.GetUsers();
             foreach (User user in users)
             {
                 if (user.Username == username)
@@ -64,7 +64,7 @@ namespace _24_04_03_Actividad_1.Services
 
         public bool UserExists(string username)
         {
-            List<User> users = this.GetUsers();
+            List<User>? users = this.GetUsers();
             foreach (User user in users)
             {
                 if (user.Username == username)
@@ -76,10 +76,10 @@ namespace _24_04_03_Actividad_1.Services
             return false;
         }
 
-        private List<User> GetUsers()
+        private List<User>? GetUsers()
         {
             string jsonData = System.IO.File.ReadAllText(this.DataPath);
-            List<User> users = JsonSerializer.Deserialize<List<User>>(jsonData);
+            List<User>? users = JsonSerializer.Deserialize<List<User>>(jsonData);
             return users;
         }
 

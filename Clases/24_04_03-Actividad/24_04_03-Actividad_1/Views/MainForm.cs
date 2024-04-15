@@ -1,19 +1,32 @@
 using _24_04_03_Actividad_1.Models;
 using _24_04_03_Actividad_1.Services;
+using _24_04_03_Actividad_1.Views;
 namespace _24_04_03_Actividad_1
 {
     public partial class MainForm : Form
     {
-        private User? _User;
+        private User? _CurrentUser;
         private UserService _UserService = UserService.GetInstance();
         public MainForm(User currentUser)
         {
             InitializeComponent();
-            this._User = currentUser;
+            this._CurrentUser = currentUser;
+
+            this.LoadUsername();
+            this.LoadProfilePic();
+        }
+
+        private void LoadUsername()
+        {
+            NameLbl.Text = this._CurrentUser.Name;
+        }
+
+        private void LoadProfilePic()
+        {
             string appPath = Application.StartupPath;
             try
             {
-                ProfilePic.Image = Image.FromFile(Path.Combine(appPath, "Uploads", this._User.ProfilePic));
+                ProfilePic.Image = Image.FromFile(Path.Combine(appPath, "Uploads", this._CurrentUser.ProfilePic));
             }
             catch (FileNotFoundException)
             {
@@ -33,8 +46,20 @@ namespace _24_04_03_Actividad_1
                 picImage.Save(filePath);
 
                 ProfilePic.Image = Image.FromFile(ProfilePicLoader.FileName);
-                _UserService.UpdateUserPic(this._User.Username, fileName);
+                _UserService.UpdateUserPic(this._CurrentUser.Username, fileName);
             }
+        }
+
+        private void calculadoraToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Form calculator = new CalculatorForm(this._CurrentUser);
+            calculator.ShowDialog();
+        }
+
+        private void concatenadorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form concatenator = new ConcatForm(this._CurrentUser);
+            concatenator.ShowDialog();
         }
     }
 }
